@@ -65,12 +65,10 @@ export default function Portfolio() {
     }, [docCoins])
 
     useEffect(() => {
-        console.log('effect')
         getCoinPortfolio.map(async (doc) => {
             const res = await axios.get(`http://localhost:3001/Coin?id=${doc.id}`)
             const resp = res.data;
             const price = resp.market_data.current_price.usd
-            console.log(price)
             if (doc.moedasTotal > 0) {
                 const saldoportfolio = (doc.MoedasWallet) * (price);
                 const dadosPortfolio = {
